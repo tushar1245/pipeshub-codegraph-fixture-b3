@@ -4,7 +4,6 @@ from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
 from app.shared.validation import require_fields, validate_percent
-from app.coupons.events import coupon_created
 from app.coupons.models import Coupon
 from app.coupons.repository import CouponRepository
 
@@ -32,7 +31,6 @@ class CouponService:
         validate_percent(payload["percent"])
         coupon = Coupon.from_dict(payload)
         self.repo.save(coupon)
-        self.bus.publish(coupon_created(coupon))
         logger.info("created Coupon %s", coupon.id)
         return coupon
 
