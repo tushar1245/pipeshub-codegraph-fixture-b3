@@ -1,4 +1,4 @@
-import { formatDate, formatLabel as label } from "../../../lib/format";
+import { formatDate, formatLabel as label } from "../../../lib/text/format";
 import { StatusBadge } from "../../../components/ui/StatusBadge";
 import type { Session } from "../types";
 

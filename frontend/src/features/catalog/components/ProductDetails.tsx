@@ -1,4 +1,4 @@
-import { formatLabel } from "../../../lib/format";
+import { formatLabel } from "../../../lib/text/format";
 import { describeSpec, parseSpec } from "../spec/productSpec";
 import type { Product } from "../types";
 

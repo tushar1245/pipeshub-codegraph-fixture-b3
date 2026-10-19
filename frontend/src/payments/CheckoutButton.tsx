@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "../components/ui/Button";
-import { formatMoney as fm } from "../lib/format";
+import { formatMoney as fm } from "../lib/text/format";
 import { checkout } from "./checkout";
 import { providerFor, type ProviderKind } from "./providers/registry";
 

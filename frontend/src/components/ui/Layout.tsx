@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { formatLabel } from "../../lib/format";
+import { formatLabel } from "../../lib/text/format";
 import { useWindowWidth } from "../../app/useWindowWidth";
 
 export interface NavItem {

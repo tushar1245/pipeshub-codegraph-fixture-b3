@@ -1,4 +1,4 @@
-import { clamp } from "./clamp.js";
+import { clamp } from "../clamp.js";
 
 const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 

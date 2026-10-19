@@ -1,4 +1,4 @@
-import { formatLabel } from "../../lib/format";
+import { formatLabel } from "../../lib/text/format";
 
 export interface StatusBadgeProps {
   status: string;

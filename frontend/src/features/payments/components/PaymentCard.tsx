@@ -1,4 +1,4 @@
-import { formatDate, formatLabel as label, formatMoney as fm } from "../../../lib/format";
+import { formatDate, formatLabel as label, formatMoney as fm } from "../../../lib/text/format";
 import { StatusBadge } from "../../../components/ui/StatusBadge";
 import type { Payment } from "../types";
 

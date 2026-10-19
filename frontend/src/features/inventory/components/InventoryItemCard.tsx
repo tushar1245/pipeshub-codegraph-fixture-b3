@@ -1,4 +1,4 @@
-import * as fmt from "../../../lib/format";
+import * as fmt from "../../../lib/text/format";
 import { StatusBadge } from "../../../components/ui/StatusBadge";
 import type { InventoryItem } from "../types";
 
