@@ -1,0 +1,4 @@
+frontend/src/generated/** linguist-generated=true
+backend/app/proto/** linguist-generated=true
+backend/third_party/** linguist-vendored=true
+assets/models/*.onnx filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,7 @@
+{
+  "name": "@acme/bff",
+  "private": true,
+  "version": "0.6.0",
+  "scripts": { "start": "tsx src/main.ts", "test": "vitest run" },
+  "devDependencies": { "tsx": "^4.19.0", "typescript": "^5.5.4", "vitest": "^2.0.5" }
+}

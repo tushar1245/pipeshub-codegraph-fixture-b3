@@ -1,0 +1,10 @@
+[package]
+name = "pricing"
+version = "0.4.2"
+edition = "2021"
+
+[lib]
+name = "pricing"
+path = "src/lib.rs"
+
+[dependencies]

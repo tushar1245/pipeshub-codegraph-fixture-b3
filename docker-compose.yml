@@ -1,0 +1,11 @@
+services:
+  api:
+    build: backend
+    environment:
+      DATABASE_URL: postgresql://acme:acme@db:5432/acme
+  web:
+    build: frontend
+  worker:
+    build: worker
+  db:
+    image: postgres:16
