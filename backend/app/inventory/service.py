@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_sku
+from app.shared.validation import require_fields, validate_sku
 from app.inventory.events import inventory_item_created
 from app.inventory.models import InventoryItem
 from app.inventory.repository import InventoryItemRepository
@@ -28,7 +28,7 @@ class InventoryItemService:
         return inventory_item
 
     def create(self, payload: dict) -> InventoryItem:
-        require(payload, ("sku", "quantity"))
+        require_fields(payload, ("sku", "quantity"))
         validate_sku(payload["sku"])
         inventory_item = InventoryItem.from_dict(payload)
         self.repo.save(inventory_item)

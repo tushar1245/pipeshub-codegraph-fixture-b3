@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_required
+from app.shared.validation import require_fields, validate_required
 from app.shipping.events import shipment_created
 from app.shipping.models import Shipment
 from app.shipping.repository import ShipmentRepository
@@ -28,7 +28,7 @@ class ShipmentService:
         return shipment
 
     def create(self, payload: dict) -> Shipment:
-        require(payload, ("order_id", "carrier"))
+        require_fields(payload, ("order_id", "carrier"))
         validate_required(payload["order_id"])
         shipment = Shipment.from_dict(payload)
         self.repo.save(shipment)

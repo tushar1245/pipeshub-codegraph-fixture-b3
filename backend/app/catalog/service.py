@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_sku
+from app.shared.validation import require_fields, validate_sku
 from app.catalog.events import product_created
 from app.catalog.models import Product
 from app.catalog.repository import ProductRepository
@@ -28,7 +28,7 @@ class ProductService:
         return product
 
     def create(self, payload: dict) -> Product:
-        require(payload, ("sku", "title"))
+        require_fields(payload, ("sku", "title"))
         validate_sku(payload["sku"])
         product = Product.from_dict(payload)
         self.repo.save(product)

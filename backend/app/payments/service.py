@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_amount
+from app.shared.validation import require_fields, validate_amount
 from app.payments.events import payment_created
 from app.payments.models import Payment
 from app.payments.repository import PaymentRepository
@@ -28,7 +28,7 @@ class PaymentService:
         return payment
 
     def create(self, payload: dict) -> Payment:
-        require(payload, ("order_id", "amount"))
+        require_fields(payload, ("order_id", "amount"))
         validate_amount(payload["amount"])
         payment = Payment.from_dict(payload)
         self.repo.save(payment)

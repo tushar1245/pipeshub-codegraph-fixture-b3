@@ -6,7 +6,7 @@ _EMAIL = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 _SKU = re.compile(r"^SKU-\d{3,}$")
 
 
-def require(payload: dict, fields: tuple[str, ...]) -> None:
+def require_fields(payload: dict, fields: tuple[str, ...]) -> None:
     missing = [f for f in fields if payload.get(f) in (None, "")]
     if missing:
         raise ValidationError(f"missing fields: {', '.join(missing)}")

@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_amount
+from app.shared.validation import require_fields, validate_amount
 from app.billing.events import invoice_created
 from app.billing.models import Invoice
 from app.billing.repository import InvoiceRepository
@@ -28,7 +28,7 @@ class InvoiceService:
         return invoice
 
     def create(self, payload: dict) -> Invoice:
-        require(payload, ("customer_id", "amount"))
+        require_fields(payload, ("customer_id", "amount"))
         validate_amount(payload["amount"])
         invoice = Invoice.from_dict(payload)
         self.repo.save(invoice)

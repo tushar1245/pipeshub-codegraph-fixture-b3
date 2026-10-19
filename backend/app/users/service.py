@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_email
+from app.shared.validation import require_fields, validate_email
 from app.users.events import user_created
 from app.users.models import User
 from app.users.repository import UserRepository
@@ -28,7 +28,7 @@ class UserService:
         return user
 
     def create(self, payload: dict) -> User:
-        require(payload, ("email", "name"))
+        require_fields(payload, ("email", "name"))
         validate_email(payload["email"])
         user = User.from_dict(payload)
         self.repo.save(user)

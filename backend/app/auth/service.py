@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_required
+from app.shared.validation import require_fields, validate_required
 from app.auth.events import session_created
 from app.auth.models import Session
 from app.auth.repository import SessionRepository
@@ -28,7 +28,7 @@ class SessionService:
         return session
 
     def create(self, payload: dict) -> Session:
-        require(payload, ("user_id", "token"))
+        require_fields(payload, ("user_id", "token"))
         validate_required(payload["user_id"])
         session = Session.from_dict(payload)
         self.repo.save(session)

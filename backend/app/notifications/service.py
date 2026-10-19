@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_required
+from app.shared.validation import require_fields, validate_required
 from app.notifications.events import notification_created
 from app.notifications.models import Notification
 from app.notifications.repository import NotificationRepository
@@ -28,7 +28,7 @@ class NotificationService:
         return notification
 
     def create(self, payload: dict) -> Notification:
-        require(payload, ("user_id", "channel"))
+        require_fields(payload, ("user_id", "channel"))
         validate_required(payload["user_id"])
         notification = Notification.from_dict(payload)
         self.repo.save(notification)

@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_required
+from app.shared.validation import require_fields, validate_required
 from app.search.events import search_query_created
 from app.search.models import SearchQuery
 from app.search.repository import SearchQueryRepository
@@ -28,7 +28,7 @@ class SearchQueryService:
         return search_query
 
     def create(self, payload: dict) -> SearchQuery:
-        require(payload, ("text", "limit"))
+        require_fields(payload, ("text", "limit"))
         validate_required(payload["text"])
         search_query = SearchQuery.from_dict(payload)
         self.repo.save(search_query)

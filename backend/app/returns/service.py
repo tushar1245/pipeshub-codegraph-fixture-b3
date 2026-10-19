@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_required
+from app.shared.validation import require_fields, validate_required
 from app.returns.events import return_request_created
 from app.returns.models import ReturnRequest
 from app.returns.repository import ReturnRequestRepository
@@ -28,7 +28,7 @@ class ReturnRequestService:
         return return_request
 
     def create(self, payload: dict) -> ReturnRequest:
-        require(payload, ("order_id", "reason"))
+        require_fields(payload, ("order_id", "reason"))
         validate_required(payload["order_id"])
         return_request = ReturnRequest.from_dict(payload)
         self.repo.save(return_request)

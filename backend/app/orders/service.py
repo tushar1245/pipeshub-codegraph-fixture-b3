@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_amount
+from app.shared.validation import require_fields, validate_amount
 from app.orders.events import order_created
 from app.orders.models import Order
 from app.orders.repository import OrderRepository
@@ -28,7 +28,7 @@ class OrderService:
         return order
 
     def create(self, payload: dict) -> Order:
-        require(payload, ("customer_id", "total"))
+        require_fields(payload, ("customer_id", "total"))
         validate_amount(payload["total"])
         order = Order.from_dict(payload)
         self.repo.save(order)

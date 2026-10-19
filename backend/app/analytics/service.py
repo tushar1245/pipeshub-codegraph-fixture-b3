@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_required
+from app.shared.validation import require_fields, validate_required
 from app.analytics.events import metric_created
 from app.analytics.models import Metric
 from app.analytics.repository import MetricRepository
@@ -28,7 +28,7 @@ class MetricService:
         return metric
 
     def create(self, payload: dict) -> Metric:
-        require(payload, ("name", "value"))
+        require_fields(payload, ("name", "value"))
         validate_required(payload["name"])
         metric = Metric.from_dict(payload)
         self.repo.save(metric)

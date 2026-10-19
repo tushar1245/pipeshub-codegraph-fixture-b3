@@ -3,7 +3,7 @@ import logging
 from app.shared.cache import Cache
 from app.shared.errors import NotFoundError
 from app.shared.events import EventBus
-from app.shared.validation import require, validate_rating
+from app.shared.validation import require_fields, validate_rating
 from app.reviews.events import review_created
 from app.reviews.models import Review
 from app.reviews.repository import ReviewRepository
@@ -28,7 +28,7 @@ class ReviewService:
         return review
 
     def create(self, payload: dict) -> Review:
-        require(payload, ("product_id", "rating"))
+        require_fields(payload, ("product_id", "rating"))
         validate_rating(payload["rating"])
         review = Review.from_dict(payload)
         self.repo.save(review)
