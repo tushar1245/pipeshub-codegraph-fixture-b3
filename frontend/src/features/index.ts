@@ -12,3 +12,4 @@ export { MetricList, MetricForm } from "./analytics";
 export { SearchQueryList, SearchQueryForm } from "./search";
 export { CouponList, CouponForm } from "./coupons";
 export { ReturnRequestList, ReturnRequestForm } from "./returns";
+export { WishlistItemList, WishlistItemForm } from "./wishlist";

@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { UserList, OrderList, PaymentList, InventoryItemList, ProductList, ShipmentList, ReviewList, NotificationList, SessionList, InvoiceList, MetricList, SearchQueryList, CouponList, ReturnRequestList } from "../features";
+import { UserList, OrderList, PaymentList, InventoryItemList, ProductList, ShipmentList, ReviewList, NotificationList, SessionList, InvoiceList, MetricList, SearchQueryList, CouponList, ReturnRequestList, WishlistItemList } from "../features";
 import { legacyFlags } from "../lib/legacyConfig.cjs";
 
 export interface RouteDef {
@@ -25,6 +25,7 @@ export function buildRoutes(): RouteDef[] {
     { path: "/search", title: "Search", component: SearchQueryList },
     { path: "/coupons", title: "Coupons", component: CouponList },
     { path: "/returns", title: "Returns", component: ReturnRequestList },
+    { path: "/wishlist", title: "Wishlist", component: WishlistItemList },
   ];
   return flags.compactTables ? routes.slice(0, 8) : routes;
 }

@@ -47,6 +47,9 @@ from app.coupons.service import CouponService
 from app.returns import routes as returns_routes
 from app.returns.repository import ReturnRequestRepository
 from app.returns.service import ReturnRequestService
+from app.wishlist import routes as wishlist_routes
+from app.wishlist.repository import WishlistItemRepository
+from app.wishlist.service import WishlistItemService
 
 logger = logging.getLogger(__name__)
 
@@ -84,5 +87,7 @@ def create_app() -> App:
     app.include(coupons_routes.router)
     returns_routes.bind(ReturnRequestService(ReturnRequestRepository(db), bus, cache))
     app.include(returns_routes.router)
+    wishlist_routes.bind(WishlistItemService(WishlistItemRepository(db), bus, cache))
+    app.include(wishlist_routes.router)
     logger.info("registered %d routes", len(app.route_table()))
     return app

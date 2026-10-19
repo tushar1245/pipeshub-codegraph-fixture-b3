@@ -13,6 +13,7 @@ import { run as syncAnalytics } from "./jobs/syncAnalytics.js";
 import { run as syncSearch } from "./jobs/syncSearch.js";
 import { run as syncCoupons } from "./jobs/syncCoupons.js";
 import { run as syncReturns } from "./jobs/syncReturns.js";
+import { run as syncWishlist } from "./jobs/syncWishlist.js";
 
 const log = createLogger("worker");
 
@@ -32,6 +33,7 @@ export async function main() {
   queue.register("search", syncSearch);
   queue.register("coupons", syncCoupons);
   queue.register("returns", syncReturns);
+  queue.register("wishlist", syncWishlist);
   const orders = await import("./jobs/syncOrders.js");
   await orders.run();
   queue.register("orders", orders.run);
