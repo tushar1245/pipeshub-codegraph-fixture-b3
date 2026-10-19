@@ -43,5 +43,4 @@ class WishlistItemService:
         wishlist_item = self.get(key)
         wishlist_item.archive()
         self.repo.save(wishlist_item)
-        self.cache.invalidate(f"wishlist:{key}")
         return wishlist_item

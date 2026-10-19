@@ -43,5 +43,4 @@ class SessionService:
         session = self.get(key)
         session.archive()
         self.repo.save(session)
-        self.cache.invalidate(f"auth:{key}")
         return session

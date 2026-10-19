@@ -43,5 +43,4 @@ class PaymentService:
         payment = self.get(key)
         payment.archive()
         self.repo.save(payment)
-        self.cache.invalidate(f"payments:{key}")
         return payment

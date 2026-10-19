@@ -14,6 +14,3 @@ class Cache:
 
     def set(self, key: str, value) -> None:
         self._items[key] = (time.time() + self.ttl, value)
-
-    def invalidate(self, key: str) -> None:
-        self._items.pop(key, None)

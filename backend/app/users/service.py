@@ -43,5 +43,4 @@ class UserService:
         user = self.get(key)
         user.archive()
         self.repo.save(user)
-        self.cache.invalidate(f"users:{key}")
         return user

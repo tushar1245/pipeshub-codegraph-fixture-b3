@@ -43,5 +43,4 @@ class MetricService:
         metric = self.get(key)
         metric.archive()
         self.repo.save(metric)
-        self.cache.invalidate(f"analytics:{key}")
         return metric

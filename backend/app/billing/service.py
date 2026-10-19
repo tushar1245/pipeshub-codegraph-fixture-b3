@@ -43,5 +43,4 @@ class InvoiceService:
         invoice = self.get(key)
         invoice.archive()
         self.repo.save(invoice)
-        self.cache.invalidate(f"billing:{key}")
         return invoice

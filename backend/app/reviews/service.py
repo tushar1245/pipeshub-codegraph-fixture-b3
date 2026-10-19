@@ -43,5 +43,4 @@ class ReviewService:
         review = self.get(key)
         review.archive()
         self.repo.save(review)
-        self.cache.invalidate(f"reviews:{key}")
         return review

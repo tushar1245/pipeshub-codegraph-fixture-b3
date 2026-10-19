@@ -43,5 +43,4 @@ class NotificationService:
         notification = self.get(key)
         notification.archive()
         self.repo.save(notification)
-        self.cache.invalidate(f"notifications:{key}")
         return notification

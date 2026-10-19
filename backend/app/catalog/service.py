@@ -43,5 +43,4 @@ class ProductService:
         product = self.get(key)
         product.archive()
         self.repo.save(product)
-        self.cache.invalidate(f"catalog:{key}")
         return product

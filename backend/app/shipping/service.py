@@ -43,5 +43,4 @@ class ShipmentService:
         shipment = self.get(key)
         shipment.archive()
         self.repo.save(shipment)
-        self.cache.invalidate(f"shipping:{key}")
         return shipment

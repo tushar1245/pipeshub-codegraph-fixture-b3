@@ -43,5 +43,4 @@ class SearchQueryService:
         search_query = self.get(key)
         search_query.archive()
         self.repo.save(search_query)
-        self.cache.invalidate(f"search:{key}")
         return search_query

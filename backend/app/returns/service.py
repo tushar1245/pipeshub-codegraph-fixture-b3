@@ -43,5 +43,4 @@ class ReturnRequestService:
         return_request = self.get(key)
         return_request.archive()
         self.repo.save(return_request)
-        self.cache.invalidate(f"returns:{key}")
         return return_request

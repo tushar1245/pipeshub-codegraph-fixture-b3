@@ -43,5 +43,4 @@ class OrderService:
         order = self.get(key)
         order.archive()
         self.repo.save(order)
-        self.cache.invalidate(f"orders:{key}")
         return order

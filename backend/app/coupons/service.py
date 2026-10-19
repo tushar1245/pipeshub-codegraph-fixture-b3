@@ -41,5 +41,4 @@ class CouponService:
         coupon = self.get(key)
         coupon.archive()
         self.repo.save(coupon)
-        self.cache.invalidate(f"coupons:{key}")
         return coupon

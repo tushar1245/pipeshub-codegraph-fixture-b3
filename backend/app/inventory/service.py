@@ -43,5 +43,4 @@ class InventoryItemService:
         inventory_item = self.get(key)
         inventory_item.archive()
         self.repo.save(inventory_item)
-        self.cache.invalidate(f"inventory:{key}")
         return inventory_item
